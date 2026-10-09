@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#111315" />
+  <title>Deu Régua — encontre o corte certo</title>
+  <meta name="description" content="Encontre barbearias e barbeiros por estilo, preço, distância e avaliação. Agende online." />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/discover" aria-label="Deu Régua - início">
+      <span class="brand-mark">DR</span>
+      <span><strong>Deu Régua</strong><small>barbearia do seu jeito</small></span>
+    </a>
+    <button class="mobile-menu" id="mobileMenu" aria-label="Abrir menu">☰</button>
+    <nav id="mainNav" class="main-nav"></nav>
+    <div id="accountArea" class="account-area"></div>
+  </header>
+
+  <main id="app" class="app-shell">
+    <div class="page-loader"><span></span><span></span><span></span></div>
+  </main>
+
+  <footer class="footer">
+    <div><strong>Deu Régua</strong><br><span>Descubra. Compare. Agende.</span></div>
+    <div class="footer-links">
+      <a href="#/discover">Descobrir</a>
+      <a href="#/plans">Planos</a>
+      <a href="#/profile">Minha conta</a>
+    </div>
+    <small>Projeto acadêmico • Dados persistentes no Railway</small>
+  </footer>
+
+  <div id="modalRoot" class="modal-root" aria-live="polite"></div>
+  <div id="toastRoot" class="toast-root" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>
