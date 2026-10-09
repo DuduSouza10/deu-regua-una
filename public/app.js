@@ -120,8 +120,27 @@ async function runSearch(){
 }
 async function renderDiscover(){
   const data=await runSearch();
+  const averageRating=data.results.length?(data.results.reduce((sum,item)=>sum+Number(item.rating||0),0)/data.results.length).toFixed(1):'—';
   appEl.innerHTML=`<section class="page">
-    <div class="hero"><div class="eyebrow">Seu estilo, sua escolha</div><h1>O barbeiro certo não precisa estar escondido.</h1><p>Busque por corte, ambiente, preço, distância e avaliação. Compare profissionais, veja trabalhos reais e agende o melhor horário.</p><div class="hero-actions"><button class="btn primary" data-action="focus-search">Encontrar barbearia</button><button class="btn ghost" data-action="use-location">⌖ Usar minha localização</button></div></div>
+    <div class="hero hero-premium">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Seu estilo, sua escolha</div>
+          <h1>Seu próximo corte começa com a <span class="hero-accent">escolha certa.</span></h1>
+          <p>Encontre barbearias e profissionais pelo que realmente importa: estilo, distância, preço, avaliação e disponibilidade.</p>
+          <div class="hero-actions"><button class="btn primary" data-action="focus-search">Encontrar barbearia</button><button class="btn ghost" data-action="use-location">⌖ Usar minha localização</button></div>
+          <div class="hero-trust"><span><strong>${data.results.length}</strong> opções encontradas</span><span>•</span><span>Perfis, portfólio e agenda em um só lugar</span></div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-brand-orbit hero-brand-orbit-a"></div>
+          <div class="hero-brand-orbit hero-brand-orbit-b"></div>
+          <div class="hero-logo-shell"><img src="/assets/logo-mark.png" alt=""></div>
+          <div class="hero-mini-card hero-mini-rating"><span class="mini-icon">★</span><div><strong>${averageRating}</strong><small>média das avaliações</small></div></div>
+          <div class="hero-mini-card hero-mini-booking"><span class="mini-icon">✓</span><div><strong>Agende online</strong><small>sem ligação, sem espera</small></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="search-panel-head"><div><span class="kicker">Busca inteligente</span><h2>Encontre exatamente o que você procura</h2></div><span class="search-panel-note">Você pode combinar vários filtros</span></div>
     <form id="searchForm" class="filters">
       <div class="field search-wide"><label>O que você procura?</label><input id="searchQ" name="q" value="${esc(state.filters.q)}" placeholder="Ex.: degradê, João, freestyle, barba..."></div>
       <div class="field"><label>Distância</label><select name="distance"><option value="">Qualquer</option>${[2,5,10,20,50].map(v=>`<option ${String(state.filters.distance)===String(v)?'selected':''} value="${v}">Até ${v} km</option>`).join('')}</select></div>
