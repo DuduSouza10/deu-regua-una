@@ -58,7 +58,7 @@ As contas são criadas automaticamente na primeira inicialização, junto com da
 
 ### Importante sobre persistência
 
-O banco fica em `/data/db.json` e as imagens enviadas em `/data/uploads`. Sem um Volume do Railway montado em `/data`, os dados podem ser perdidos em redeploy/restart. O `Dockerfile` já declara `/data` como volume e a aplicação foi preparada para usar esse caminho.
+O banco fica em `/data/db.json` e as imagens enviadas em `/data/uploads`. O volume deve ser criado diretamente no Railway e montado em `/data`. O `Dockerfile` não usa a instrução `VOLUME`, pois o Railway exige que a persistência seja configurada pelo recurso Railway Volumes.
 
 ## Rodar localmente
 
